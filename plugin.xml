@@ -99,7 +99,9 @@
             <!-- Not required to allow users to work around this -->
             <uses-feature android:name="android.hardware.camera" android:required="false" />
         </config-file>
-
+<!--
+        <source-file src="src/android/com.google.zxing.client.android.captureactivity.jar" target-dir="libs"/>
+-->
         <source-file src="src/android/com.google.zxing.client.android.captureactivity.jar" target-dir="libs"/>
 
         <!--
