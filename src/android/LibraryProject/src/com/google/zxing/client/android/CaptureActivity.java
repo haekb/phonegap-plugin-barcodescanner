@@ -185,12 +185,12 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
     viewfinderView.setCameraManager(cameraManager);
 
     resultView = findViewById(fakeR.getId("id", "result_view"));
-    //statusView = (TextView) findViewById(fakeR.getId("id", "status_view"));
+    statusView = (TextView) findViewById(fakeR.getId("id", "status_view"));
 
     handler = null;
     lastResult = null;
 
-    //resetStatusView();
+    resetStatusView();
 
     SurfaceView surfaceView = (SurfaceView) findViewById(fakeR.getId("id", "preview_view"));
     SurfaceHolder surfaceHolder = surfaceView.getHolder();
@@ -240,7 +240,7 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
         
         String customPromptMessage = intent.getStringExtra(Intents.Scan.PROMPT_MESSAGE);
         if (customPromptMessage != null) {
-          //statusView.setText(customPromptMessage);
+          statusView.setText(customPromptMessage);
         }
 
       } else if (dataString != null &&
@@ -597,7 +597,7 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
     // barcode was found (e.g. contact info) rather than the full contents, which they won't
     // have time to read.
     if (resultDurationMS > 0) {
-      //statusView.setText(getString(resultHandler.getDisplayTitle()));
+      statusView.setText(getString(resultHandler.getDisplayTitle()));
     }
 
     if (copyToClipboard && !resultHandler.areContentsSecure()) {
@@ -746,13 +746,13 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
     if (handler != null) {
       handler.sendEmptyMessageDelayed(fakeR.getId("id", "restart_preview"), delayMS);
     }
-    //resetStatusView();
+    resetStatusView();
   }
 
   private void resetStatusView() {
-    //resultView.setVisibility(View.GONE);
-    //statusView.setText(fakeR.getId("string", "msg_default_status"));
-    //statusView.setVisibility(View.VISIBLE);
+    resultView.setVisibility(View.GONE);
+    statusView.setText(fakeR.getId("string", "msg_default_status"));
+    statusView.setVisibility(View.VISIBLE);
     viewfinderView.setVisibility(View.VISIBLE);
     lastResult = null;
   }
